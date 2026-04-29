@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "skills": {
+    "mongodb": {
+      "source": "hoodini/ai-agents-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mongodb/SKILL.md",
+      "computedHash": "9b169b7c9de672fb8646c8c0c91865bc2dff3d5739b2d864bd039f12cf5dc800"
+    },
+    "mongodb-schema-design": {
+      "source": "mongodb/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/mongodb-schema-design/SKILL.md",
+      "computedHash": "46d658eaab2b13e9b8e571b5b084ae62cc9b3866bbbd98d23e4b9af9c1c26626"
+    },
+    "nodejs-backend-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "computedHash": "c6a99966c2565acc388e574039127abc770bb9a3338be761e421e16f023f702b"
+    },
+    "nodejs-best-practices": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "64f10ff6795265dc4a97a72af86ee309fe57e6c35507775a4da893985984956b"
+    },
+    "nodejs-express-server": {
+      "source": "aj-geddes/useful-ai-prompts",
+      "sourceType": "github",
+      "skillPath": "skills/nodejs-express-server/SKILL.md",
+      "computedHash": "94af4eda308df6d27b94cc866de0d3d857755c91da01808d3d8130d91ebaf231"
+    }
+  }
+}
