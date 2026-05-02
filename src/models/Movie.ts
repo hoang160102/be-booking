@@ -77,8 +77,7 @@ const movieSchema = new Schema<IMovie>({
   timestamps: true,
 });
 
-// Indexes
-movieSchema.index({ slug: 1 });
+// Indexes for search
 movieSchema.index({ title: 'text' });
 
 const Movie: Model<IMovie> = mongoose.model<IMovie>('Movie', movieSchema);

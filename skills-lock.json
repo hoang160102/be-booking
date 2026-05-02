@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "docker-deployment": {
+      "source": "pluginagentmarketplace/custom-plugin-nodejs",
+      "sourceType": "github",
+      "skillPath": "skills/docker-deployment/SKILL.md",
+      "computedHash": "759bb4f2c4b03b2add707bc60427c39a766a83857049187e57bb2751d2b7f8ba"
+    },
+    "docker-expert": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "skillPath": "skills/docker-expert/SKILL.md",
+      "computedHash": "7a0cf3e3a5f8d18ddb452c784ac965aa40b1bfa2a736c5689d252328f18017d1"
+    },
     "mongodb": {
       "source": "hoodini/ai-agents-skills",
       "sourceType": "github",
@@ -12,6 +24,12 @@
       "sourceType": "github",
       "skillPath": "skills/mongodb-schema-design/SKILL.md",
       "computedHash": "46d658eaab2b13e9b8e571b5b084ae62cc9b3866bbbd98d23e4b9af9c1c26626"
+    },
+    "multi-stage-dockerfile": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "skillPath": "skills/multi-stage-dockerfile/SKILL.md",
+      "computedHash": "698bf93a84dae18fd7bd0b1d35c21427307fde78fbdf4624be9726f5f98189ca"
     },
     "nodejs-backend-patterns": {
       "source": "wshobson/agents",
