@@ -1,4 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import Counter from './Counter';
 
 export interface IUser extends Document {
@@ -57,8 +59,7 @@ const userSchema = new Schema<IUser>({
   },
   role: {
     type: Number,
-    enum: [0, 1, 2],
-    default: 2, //0: user, 1: staff, 2: admin
+    enum: [0, 1, 2], //0: user, 1: staff, 2: admin
   },
   avatar: {
     type: String,
@@ -80,7 +81,7 @@ userSchema.pre('save', async function () {
       { $inc: { seq: 1 } },
       { new: true, upsert: true }
     );
-    
+
     if (counter) {
       this.userId = counter.seq;
     }
@@ -88,6 +89,21 @@ userSchema.pre('save', async function () {
     throw error;
   }
 });
+
+// Encrypt password using bcrypt
+userSchema.pre('save', async function () {
+  if (!this.isModified('password')) {
+    return;
+  }
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+// Match user entered password to hashed password in database
+userSchema.methods.matchPassword = async function (enteredPassword: string) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 
 const User: Model<IUser> = mongoose.model<IUser>('User', userSchema);
 

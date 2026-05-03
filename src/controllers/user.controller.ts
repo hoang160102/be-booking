@@ -18,7 +18,9 @@ class UserController {
   public static async createUser(req: Request, res: Response, next: NextFunction) {
     try {
       const userData = req.body;
+      userData.role = 2; //admin
       const user = await User.create(userData);
+
       res.status(201).json({
         success: true,
         data: user,
