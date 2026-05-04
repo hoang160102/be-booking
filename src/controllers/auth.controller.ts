@@ -51,6 +51,17 @@ class AuthController {
       next(error);
     }
   }
+
+  public static async logout(req: Request, res: Response, next: NextFunction) {
+    try {
+      res.status(200).json({
+        success: true,
+        message: "Đăng xuất thành công",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 
 export default AuthController;
