@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import User from "../models/User";
+import { AuthRequest } from "../middlewares/auth.middleware";
 
 class AuthController {
   public static async login(req: Request, res: Response, next: NextFunction) {
@@ -35,6 +36,18 @@ class AuthController {
       })
     }
     catch (error) {
+      next(error);
+    }
+  }
+
+  public static async getMe(req: AuthRequest, res: Response, next: NextFunction) {
+    try {
+      const user = await User.findById(req.userId);
+      res.status(200).json({
+        success: true,
+        data: user,
+      });
+    } catch (error) {
       next(error);
     }
   }
