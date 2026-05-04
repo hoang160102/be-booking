@@ -15,6 +15,8 @@ export interface IUser extends Document {
   createdAt: Date;
   updatedAt: Date;
   gender: 0 | 1;
+  getSignedJwtToken(): string;
+  matchPassword(enteredPassword: string): Promise<boolean>;
 }
 
 const userSchema = new Schema<IUser>({
@@ -99,6 +101,13 @@ userSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
+
+// Sign JWT and return
+userSchema.methods.getSignedJwtToken = function () {
+  return jwt.sign({ id: this._id.toString() }, process.env.JWT_SECRET!, {
+    expiresIn: process.env.JWT_EXPIRE as any,
+  });
+};
 
 // Match user entered password to hashed password in database
 userSchema.methods.matchPassword = async function (enteredPassword: string) {
